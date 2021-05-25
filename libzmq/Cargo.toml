@@ -18,7 +18,9 @@ homepage = "https://jean-airoldie.github.io/libzmq-rs/"
 maintenance = { status = "passively-maintained" } 
 
 [features]
+default = ["curve", "vendored"]
 curve = ['libzmq-sys/curve', 'libzmq-sys/libsodium']
+vendored = ['libzmq-sys/vendored']
 
 [dependencies]
 libc = "0.2"

@@ -5,7 +5,7 @@ authors = ["jean-airoldie <maxence.caron@protonmail.com>"]
 edition = "2018"
 license = "MIT OR Apache-2.0"
 links = "zmq"
-build = "build.rs"
+build = "build/main.rs"
 description = """
 Raw CFFI bindings for libzmq
 """
@@ -23,6 +23,7 @@ curve = []
 # Renew the pre-generated `libzmq` bindings.
 renew-bindings = ['bindgen']
 libsodium = ['libsodium-sys']
+vendored = ['zeromq-src']
 
 [dependencies]
 libc = "0.2"
@@ -35,4 +36,8 @@ version-sync = "0.9"
 cmake = "0.1"
 bindgen = { version = "0.53.2", optional = true }
 # libzmq 4.3.2
-zeromq-src = "0.1.10"
+zeromq-src = { version = "0.1.10", optional = true }
+metadeps = "1"
+
+[package.metadata.pkg-config]
+libzmq = "4.1"
