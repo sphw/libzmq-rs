@@ -1,3 +1,4 @@
 [submodule "libzmq-sys/vendor"]
 	path = libzmq-sys/vendor
 	url = https://github.com/zeromq/libzmq
+    	branch = v4.3.2

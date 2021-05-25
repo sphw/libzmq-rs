@@ -2,6 +2,8 @@ use std::env;
 #[cfg(feature = "renew-bindings")]
 use std::path::{Path, PathBuf};
 
+mod src;
+
 #[cfg(feature = "renew-bindings")]
 fn gen_bindings(include_dir: &Path) {
     let args = vec!["-DZMQ_BUILD_DRAFT_API=1"];
@@ -41,12 +43,12 @@ fn main() {
         let include_dir = env::var("DEP_SODIUM_INCLUDE")
             .expect("build metadata `DEP_SODIUM_INCLUDE` required");
 
-        Some(zeromq_src::LibLocation::new(lib_dir, include_dir))
+        Some(src::LibLocation::new(lib_dir, include_dir))
     } else {
         None
     };
 
-    let artifacts = zeromq_src::Build::new()
+    let artifacts = src::Build::new()
         .link_static(true)
         .enable_draft(true)
         .enable_curve(enable_curve)
